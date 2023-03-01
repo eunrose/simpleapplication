@@ -2,6 +2,7 @@
 import 'package:code4/Pages/student.dart';
 import 'package:flutter/material.dart';
 
+
 class DetailsPage extends StatelessWidget {
 
   final Student details;
