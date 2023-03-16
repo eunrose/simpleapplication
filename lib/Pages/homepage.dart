@@ -16,7 +16,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  Student estudent =
+  Student student =
   Student(
     name: '',
     birthday: '',
@@ -33,8 +33,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Basic Information'),
-      ),
+        title: const Text('Information'),
+        centerTitle: true,
+        backgroundColor: Colors.red,
+        ),
       body: ListView.builder(
         itemCount: information.length,
         itemBuilder: (context, index){
@@ -55,13 +57,34 @@ class _MyHomePageState extends State<MyHomePage> {
                       context,
                       MaterialPageRoute(
                           builder: (context)=> DetailsPage(details: information[index])
-                      )
+                      ),
                   );
                 },
               ),
             ),
           );
         },
+      ),
+      drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: const <Widget> [
+              DrawerHeader(child: Center(
+                child: Icon(Icons.person_outline),
+              ),
+              ),
+              ListTile(
+                leading: Icon(Icons.supervised_user_circle),
+                title: Text('eunrosie'),
+              ),
+              Divider(thickness: 1.0,),
+              ListTile(
+                leading: Icon(Icons.alternate_email),
+                title: Text('roselynlingkit@gmail.com'),
+              )
+            ],
+
+          )
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: ()async{
@@ -74,10 +97,12 @@ class _MyHomePageState extends State<MyHomePage> {
             setState(() {
               information.add(newlistinfo);
             });
-          }
-        },
+          }},
         child: const Icon(Icons.add),
+
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
+
 }
